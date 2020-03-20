@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<package name="default" extends="struts-default">
+		<action name="login" class="com.action.LoginAction">
+			<!-- redirectAction返回类型 -->
+			<result type="redirectAction">
+				<param name="actionName">userLogin</param><!-- Action参数名 -->
+				<param name="namespace">/user</param><!-- 命名空间参数 -->
+			</result>
+			<!-- 返回值为error，redirectAction类型，重定向到名为error的Action -->
+			<result name="error" type="redirectAction">
+				<param name="actionName">error</param>
+			</result>
+		</action>
+		<action name="error">
+			<result>/error.jsp</result>
+		</action>
+	</package>
+	<!-- 配置user的包，命名空间为/user -->
+	<package name="user" extends="struts-default" namespace="/user"> 
+		<!-- 配置名为userLogin的Action -->
+		<action name="userLogin" class="com.action.UserAction">
+			<result>/hello.jsp</result>
+		</action>
+	</package>
+</struts>

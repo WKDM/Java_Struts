@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--1. 配置常量 -->
+	<constant name="struts.action.extension" value="html"></constant>
+	<!-- 2. 配置开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 
+		package:表示包
+			name:包名，在struts.xml中包名不能相同，包名是唯一的
+			extends:继承，固定值：struts-default
+		action:动作
+			name:相当于servlet的映射路径
+			class:处理请求的类，相当于Servlet类
+			methods:处理请求的方法
+		result:结果写jsp返回的页面
+	 -->
+	<package name="p1" extends="struts-default">
+		<action name="hello" class="demo01.HelloAction" method="sayHello">
+			<result name="success">/success.jsp</result>
+		</action>
+	</package>
+</struts>
