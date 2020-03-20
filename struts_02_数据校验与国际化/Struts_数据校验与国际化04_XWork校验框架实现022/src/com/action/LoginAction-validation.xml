@@ -1,0 +1,23 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- age域 -->
+	<field name="age">
+		<!-- 域类型为整形 -->
+		<field-validator type="int">
+			<param name="min">10</param><!-- 最小值为10 -->
+			<param name="max">30</param><!-- 最大值为30 -->
+			<message>the age must be from 10 to 30!</message>
+		</field-validator>
+	</field>
+	<!-- name域 -->
+	<field name="name">
+		<!-- 域类型为requiredstring -->
+		<field-validator type="requiredstring">
+			<message>the age must be from 10 to 30</message>
+		</field-validator>
+	</field>
+	<!-- 校验类型 -->
+	
+</validators>

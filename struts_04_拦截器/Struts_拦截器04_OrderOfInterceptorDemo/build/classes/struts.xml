@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="firstinterceptor" class="com.interceptor.FirstInterceptor" />
+			<interceptor name="secondinterceptor" class="com.interceptor.SecondInterceptor" />
+			<interceptor name="thirdinterceptor" class="com.interceptor.ThirdInterceptor" />
+			<!-- 配置拦截器栈 -->
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="firstinterceptor" />
+				<interceptor-ref name="secondinterceptor" />
+				<interceptor-ref name="thirdinterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置名为FirstAction的Action -->
+		<action name="firstaction" class="com.action.FirstAction">		
+			<result type="chain">secondaction</result><!-- 拦截器连 -->
+			<interceptor-ref name="mystack" />
+		</action>
+		<action name="secondaction" class="com.action.SecondAction">
+			<result>/success.jsp</result>
+		</action>
+	</package>
+</struts>

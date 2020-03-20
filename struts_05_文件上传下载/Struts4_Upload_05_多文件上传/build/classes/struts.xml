@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<!-- 配置国际化 -->
+	<constant name="struts.custom.i18n.resources" value="fileuploadmessage"></constant>
+	
+	<!-- 配置文件上传最大值 -->
+	<constant name="struts.multipart.maxSize" value="31457280"></constant>
+	
+	<package name="p1" namespace="/" extends="struts-default">
+		<action name="upload" class="com.action.UploadAction" method="uploading">
+			
+			<result name="input">/uploading.jsp</result>
+		</action>
+	</package>
+</struts>

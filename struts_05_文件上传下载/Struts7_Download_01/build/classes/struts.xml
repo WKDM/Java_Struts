@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<package name="p1" namespace="/" extends="struts-default">
+		<action name="download" class="com.action.DownloadAction" method="download">	
+			<!-- 以流的形式返回客户端 -->
+			<result name="success" type="stream">
+				<!-- 输入流的名称 -->
+				<param name="inputName">inputStream</param>
+				<param name="contentdisposition">attachment;filename=${filename}</param>
+				<param name="contentType">application/octet-stream</param>
+			</result>
+		</action>
+	</package>
+</struts>

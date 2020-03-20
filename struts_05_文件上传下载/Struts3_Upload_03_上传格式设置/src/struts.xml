@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<package name="p1" namespace="/" extends="struts-default">
+		<action name="upload" class="com.action.UploadAction" method="uploading">
+			<interceptor-ref name="defaultStack">
+				<!-- 依赖注入：原理是调用set方法 -->
+				<!-- 设置上传格式:
+					1、按照文件类型<param name="fileUpload.allowedTypes">image/png,image/jpeg</param>
+					2、按照扩展名<param name="fileUpload.allowedExtension">.png,.jpg</param>
+				 -->
+				<param name="fileUpload.allowedExtensions">png,jpg</param><!-- 设置上传格式 -->
+			</interceptor-ref>
+			<result name="input">/uploading.jsp</result>
+		</action>
+	</package>
+</struts>
